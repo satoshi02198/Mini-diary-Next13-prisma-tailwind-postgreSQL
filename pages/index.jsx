@@ -85,7 +85,7 @@
 
 import PostForm from "../components/PostForm";
 import Tasks from "../components/Tasks";
-import prisma from "../lib/prisma";
+// import prisma from "../lib/prisma";
 
 export default function Home({ posts }) {
   return (
@@ -106,11 +106,20 @@ export default function Home({ posts }) {
 }
 
 export async function getServerSideProps() {
-  const posts = await prisma.post.findMany();
+  const res = await fetch("http://localhost:3000/api/posts");
+  const jsonres = await res.json();
 
   return {
     props: {
-      posts: JSON.parse(JSON.stringify(posts)),
+      posts: jsonres,
     },
   };
+
+  // const posts = await prisma.post.findMany();
+
+  // return {
+  //   props: {
+  //     posts: JSON.parse(JSON.stringify(posts)),
+  //   },
+  // };
 }
