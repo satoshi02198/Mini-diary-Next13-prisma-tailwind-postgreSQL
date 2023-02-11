@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Tasks = ({ id, title, content, timestamp }) => {
+const Tasks = ({ id, title, content, createdAt, updatedAt }) => {
   const [editTitle, setEditTitle] = useState(title);
   const [editContent, setEditContent] = useState(content);
   const [taskState, setTaskState] = useState("view");
@@ -89,7 +89,11 @@ const Tasks = ({ id, title, content, timestamp }) => {
             <p className="text-xl mb-3 border-b-2 ">{`Title:  ${title}`} </p>
 
             <p className="text-lg mb-5">{content}</p>
-            <p className="">{timestamp}</p>
+            {createdAt === updatedAt ? (
+              <p className="">create: {createdAt}</p>
+            ) : (
+              <p className="">update: {updatedAt}</p>
+            )}
             <div className="flex mt-2 justify-end">
               <button
                 onClick={() => setTaskState("edit")}

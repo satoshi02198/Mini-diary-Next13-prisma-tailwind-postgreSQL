@@ -90,7 +90,7 @@ import prisma from "../lib/prisma";
 
 export default function Home({ posts }) {
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 max-w-7xl mx-auto">
       <Header />
       <PostForm />
       <div className="sm:flex  sm:justify-center sm:items-baseline sm:flex-wrap max-w-7xl mx-auto mt-7">
@@ -98,6 +98,8 @@ export default function Home({ posts }) {
           <Tasks
             title={post.title}
             content={post.content}
+            createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
             id={post.id}
             key={post.id}
           />

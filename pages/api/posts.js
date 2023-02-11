@@ -24,7 +24,7 @@ export default async (req, res) => {
       return res.status(500);
     }
   } else if (req.method === "PUT") {
-    const { editTitle, editContent, id } = JSON.parse(req.body);
+    const { editTitle, editContent, id, updatedAt } = JSON.parse(req.body);
     try {
       const result = await prisma.post.update({
         where: { id: id },
