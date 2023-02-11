@@ -11,7 +11,7 @@ const Tasks = ({ id, title, content, timestamp }) => {
 
   const editTask = async (e) => {
     e.preventDefault();
-    const data = await fetch("api/updatePosts", {
+    const data = await fetch("api/posts", {
       method: "PUT",
       body: JSON.stringify({ editTitle, editContent, id }),
     });
@@ -25,7 +25,7 @@ const Tasks = ({ id, title, content, timestamp }) => {
 
   const deleteTask = async (e) => {
     e.preventDefault();
-    const data = await fetch("api/deletePosts", {
+    const data = await fetch("api/posts", {
       method: "DELETE",
       body: JSON.stringify({ id }),
     });
