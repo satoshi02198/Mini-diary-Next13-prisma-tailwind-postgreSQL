@@ -10,13 +10,12 @@ export default async (req, res) => {
       res.status(500).json(error);
     }
   } else if (req.method === "POST") {
-    const { title, content, id } = JSON.parse(req.body);
+    const { title, content } = JSON.parse(req.body);
     try {
       const createdPost = await prisma.post.create({
         data: {
           title: title,
           content: content,
-          id: "",
         },
       });
       res.status(200).json(createdPost);
