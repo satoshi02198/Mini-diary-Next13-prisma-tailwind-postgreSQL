@@ -83,18 +83,24 @@
 //   )
 // }
 
+import PostForm from "../components/PostForm";
+import Tasks from "../components/Tasks";
 import prisma from "../lib/prisma";
 
 export default function Home({ posts }) {
   return (
     <div>
-      <h1>home</h1>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-        </div>
-      ))}
+      <PostForm />
+      <div className="sm:flex  sm:justify-center sm:items-baseline sm:flex-wrap max-w-7xl mx-auto mt-7">
+        {posts.reverse().map((post) => (
+          <Tasks
+            title={post.title}
+            content={post.content}
+            id={post.id}
+            key={post.id}
+          />
+        ))}{" "}
+      </div>
     </div>
   );
 }
